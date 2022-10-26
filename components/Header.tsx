@@ -7,7 +7,7 @@ const Header = () => {
       <nav className="flex justify-between items-center max-w-7xl mx-auto">
         <img src="images/IDC_LOGO.svg" alt="idc" className="h-6 md:h-8" />
 
-        <a href="https://github.com/mrtnprzk" target="_blank" rel="noreferrer">
+        <a href="https://github.com/mrtnprzk/idc-assignment" target="_blank" rel="noreferrer">
           <img src="images/github_logo.png" alt="github" className="h-8 md:h-10" />
         </a>
       </nav>
