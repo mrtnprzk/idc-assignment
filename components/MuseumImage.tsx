@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
 interface Props {
@@ -10,7 +10,7 @@ const MuseumImage = ({ id }: Props) => {
   const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  const getImage = async () => {
+  const getImage = useCallback(async () => {
     try {
       const response = await axios.get(
         `https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`
@@ -22,11 +22,11 @@ const MuseumImage = ({ id }: Props) => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
     getImage();
-  }, []);
+  }, [getImage]);
 
   if (isLoading) {
     return (

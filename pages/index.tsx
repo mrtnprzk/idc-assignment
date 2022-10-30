@@ -2,13 +2,13 @@ import Head from "next/head";
 import axios from "axios";
 import Header from "../components/Header";
 import MuseumImage from "../components/MuseumImage";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 export default function Home() {
   const [objectIDs, setObjectIDs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     try {
       const response = await axios.get(
         "https://collectionapi.metmuseum.org/public/collection/v1/search?q=sunflowers"
@@ -18,11 +18,11 @@ export default function Home() {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, []);
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
 
   if (objectIDs)
     return (
